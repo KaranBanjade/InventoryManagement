@@ -11,6 +11,7 @@
             host: HOST,
             dialect: 'mysql',
             logging: false,
+            force: true,
             });
         
             db.authenticate().then(()=>{

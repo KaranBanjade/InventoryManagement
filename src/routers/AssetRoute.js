@@ -5,6 +5,7 @@ const operations = require('../utilities/common')(Asset);
 const express = require('express');
 const router = express.Router();
 const { throwError,sendResponse } = require('../utilities/tools');
+const { where } = require('sequelize');
 
 router.get('/:id',async (req, res) => {
         try {
@@ -26,13 +27,13 @@ router.post('/',async (req, res) => {
 
 router.put('/:id',async (req, res) => {
         try {
-            const asset = await Asset.findOne({where:{id:req.params.id}});
-            const oldAsset = JSON.parse(JSON.stringify(asset));
-            await asset.update({...req.body});
+            const oldAsset = await Asset.findOne({where:{id:req.params.id}});
+            
+            await Asset.update({...req.body}, {where:{id:req.params.id}, returning:true});
             await AssetTrack.create({
-                assetId:asset.id,
-                oldStatus:oldAsset.status,
-                newStatus:asset.status,
+                assetId:req.params.id,
+                oldStatus:oldAsset?.status,
+                newStatus:req.body.status,
             });
             sendResponse({res, status: 200, data: {message:'Updated successfully'}});
         } catch (err) {

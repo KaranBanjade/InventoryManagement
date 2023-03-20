@@ -9,7 +9,8 @@ const InventoryStockModel = {
         defaultValue: DataTypes.UUIDV4,
     },
     inventoryId: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
+
     },
     unit: {
         type: DataTypes.ENUM('KELVIN', 'METER', 'AMPERE', 'SECOND', 'MOLE', 'KILOGRAM', 'CANDELA'),
