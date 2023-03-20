@@ -15,9 +15,10 @@ const AssetModel = {
         defaultValue: '',
     },
     status: {
-        type: DataTypes.ENUM('NEW, WORKING, BACKUP, END_OF_LIFE, REMOVED'),
+        type: DataTypes.ENUM('NEW', 'WORKING', 'BACKUP', 'END_OF_LIFE', 'REMOVED'),
         allowNull: false,
         primaryKey: false,
+        defaultValue: 'NEW',
     },
     price: {
         type: DataTypes.DOUBLE,
