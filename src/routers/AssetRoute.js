@@ -1,5 +1,5 @@
 
-const { Asset } = require('../models');
+const { Asset,AssetTrack } = require('../models');
 const operations = require('../utilities/common')(Asset);
     
 const express = require('express');
@@ -8,7 +8,7 @@ const { throwError,sendResponse } = require('../utilities/tools');
 
 router.get('/:id',async (req, res) => {
         try {
-            const resp= await operations.get({id: req.params.id || req.query.id});
+            const resp= await operations.get({id: req.params.id || req.query.id, populate:'assetTracks_'});
             sendResponse({res, status: 200, data: resp});
         } catch (err) {
             throwError(res, err);
@@ -26,8 +26,15 @@ router.post('/',async (req, res) => {
 
 router.put('/:id',async (req, res) => {
         try {
-            const resp = await operations.update({id: req.params.id || req.query.id,body:req.body});
-            sendResponse({res, status: 200, data: resp});
+            const asset = await Asset.findOne({where:{id:req.params.id}});
+            const oldAsset = JSON.parse(JSON.stringify(asset));
+            await asset.update({...req.body});
+            await AssetTrack.create({
+                assetId:asset.id,
+                oldStatus:oldAsset.status,
+                newStatus:asset.status,
+            });
+            sendResponse({res, status: 200, data: {message:'Updated successfully'}});
         } catch (err) {
             throwError(res, err);
         }
@@ -44,7 +51,7 @@ router.delete('/:id',async (req, res) => {
 
 router.post('/all', async(req, res) => {
     try {
-        const resp = await operations.getAll(req.body);
+        const resp = await operations.getAll({...req.body, populate:'assetTracks_'});
             sendResponse({res, status: 200, data: resp});
     } catch (err) {
         throwError(res, err);
