@@ -44,7 +44,7 @@ router.delete('/:id', async (req, res) => {
 
 router.post('/all', async (req, res) => {
     try {
-        const resp = await operations.getAll({...req.body, populate: ['inventories_', 'assets_']});
+        const resp = await operations.getAll({ ...req.body, populate: ['inventories_', 'assets_'] });
         sendResponse({ res, status: 200, data: resp });
     } catch (err) {
         throwError(res, err);

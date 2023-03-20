@@ -7,14 +7,14 @@ const commonGen = (model) => {
     if (!id) throwError('No id provided', null, 400);
     const data = await MODEL.findOne({
       where: { id },
-      include: populate 
+      include: populate
     });
     return data;
   }
 
   const update = async ({ id, ...updatedBody }) => {
     if (!id) throwError('No id provided', null, 400);
-    console.log(id,updatedBody);
+    console.log(id, updatedBody);
     const data = await MODEL.update(updatedBody.body, { where: { id } });
     return { message: 'Updated successfully' };
   }
