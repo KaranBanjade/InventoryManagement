@@ -10,16 +10,12 @@
         const db = new Sequelize(DATABASE, USER, PASSWORD, {
             host: HOST,
             dialect: 'mysql',
-            logging: false
+            logging: false,
+            sync: {force:true}
             });
         
             db.authenticate().then(()=>{
                 console.log("Connected!");
-                db.sync().then(()=>{
-                    console.log("Database is synced");
-                }).catch((error)=>{
-                    console.log(error);
-                })
             })
             .catch((error)=>{
                 console.log(error);

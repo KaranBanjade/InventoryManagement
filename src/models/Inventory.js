@@ -16,12 +16,12 @@ const InventoryModel = {
     },
     status: {
         type: DataTypes.ENUM('ACTIVE', 'INACTIVE'),
-        allowNull: false,
+        allowNull: true,
         primaryKey: false
     },
     type: {
         type: DataTypes.ENUM('CONSUMABLE', 'SPARE_PART', 'COMPONENT', 'TOOL_AND_KIT'),
-        allowNull: false,
+        allowNull: true,
         primaryKey: false
     },
     timestamp: {
