@@ -8,7 +8,9 @@ const { throwError, sendResponse } = require('../utilities/tools');
 
 router.get('/:id', async (req, res) => {
     try {
-        const resp = await operations.get({ id: req.params.id || req.query.id, populate: 'inventoryStocks_' });
+        const resp = await operations.get({
+                id: req.params.id || req.query.id, populate: 'inventoryStocks_'
+            });
         sendResponse({ res, status: 200, data: resp });
     } catch (err) {
         throwError(res, err);

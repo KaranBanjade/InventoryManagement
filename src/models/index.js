@@ -5,6 +5,7 @@ const InventoryModel = require('./Inventory')
 const InventoryStockModel = require('./InventoryStock')
 const InventoryStockTrackModel = require('./InventoryStockTrack')
 const HospitalModel = require('./Hospital')
+const AdminModel = require('./Admin')
 
     
         const db = require('../db/conn');
@@ -21,6 +22,7 @@ const HospitalModel = require('./Hospital')
 
             const Hospital = db.define('Hospital', HospitalModel);
 
+            const Admin = db.define('Admin', AdminModel);
 
             Asset.hasMany(AssetTrack, {foreignKey: 'assetId', as: 'assetTracks_'});
             AssetTrack.belongsTo(Asset, {foreignKey: 'assetId',as: 'asset_'});
@@ -37,6 +39,8 @@ const HospitalModel = require('./Hospital')
             Hospital.hasMany(Asset, {foreignKey: 'hospitalId', as: 'assets_'});
             Asset.belongsTo(Hospital, {foreignKey: 'hospitalId',as: 'hospital_'});
 
+            Hospital.hasMany(Admin, {foreignKey: 'hospitalId', as: 'admins_'});
+            Admin.belongsTo(Hospital, {foreignKey: 'hospitalId',as: 'hospital_'});
 
         const syncDatabase = async () => {
             await db.sync({force: true,

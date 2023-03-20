@@ -4,6 +4,7 @@ const { InventoryRouter } = require('./InventoryRoute');
 const { InventoryStockRouter } = require('./InventoryStockRoute');
 const { InventoryStockTrackRouter } = require('./InventoryStockTrackRoute');
 const { HospitalRouter } = require('./HospitalRoute');
+const { AdminRouter } = require('./AdminRoute');
 const routes = (app) => {
     app.use('/api/asset', AssetRouter);
     app.use('/api/assettrack', AssetTrackRouter);
@@ -11,6 +12,6 @@ const routes = (app) => {
     app.use('/api/inventorystock', InventoryStockRouter);
     app.use('/api/inventorystocktrack', InventoryStockTrackRouter);
     app.use('/api/hospital', HospitalRouter);
-
+    app.use('/api/admin', AdminRouter);
 }
 module.exports = routes;
