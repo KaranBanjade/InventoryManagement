@@ -6,7 +6,7 @@ const AssetModel = {
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
-        defaultValue: 'UUIDV4',
+        defaultValue: DataTypes.UUIDV4,
     },
     name: {
         type: DataTypes.STRING,
@@ -23,7 +23,7 @@ const AssetModel = {
         type: DataTypes.DOUBLE,
         allowNull: false,
         primaryKey: false,
-        defaultValue: '0',
+        defaultValue: 0,
     },
     currency: {
         type: DataTypes.STRING,

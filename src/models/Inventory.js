@@ -6,7 +6,7 @@ const InventoryModel = {
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
-        defaultValue: 'UUIDV4',
+        defaultValue: DataTypes.UUIDV4,
     },
     name: {
         type: DataTypes.STRING,

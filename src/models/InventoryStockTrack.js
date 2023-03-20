@@ -6,25 +6,22 @@ const InventoryStockTrackModel = {
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
-        defaultValue: 'UUIDV4',
+        defaultValue: DataTypes.UUIDV4,
     },
-    inventoryStock: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        primaryKey: false,
-        defaultValue: 'FK',
+    inventoryStockId: {
+        type: DataTypes.UUID,
     },
     oldCount: {
         type: DataTypes.DOUBLE,
         allowNull: false,
         primaryKey: false,
-        defaultValue: '0',
+        defaultValue: 0,
     },
     newCount: {
         type: DataTypes.DOUBLE,
         allowNull: false,
         primaryKey: false,
-        defaultValue: '0',
+        defaultValue: 0,
     },
     timestamp: {
         type: DataTypes.DATE,

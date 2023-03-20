@@ -6,16 +6,13 @@ const InventoryStockModel = {
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
-        defaultValue: 'UUIDV4',
+        defaultValue: DataTypes.UUIDV4,
     },
-    inventory: {
+    inventoryId: {
         type: DataTypes.STRING,
-        allowNull: false,
-        primaryKey: false,
-        defaultValue: 'fk',
     },
     unit: {
-        type: DataTypes.ENUM('KELVIN, METER, AMPERE, SECOND, MOLE, KILOGRAM, CANDELA'),
+        type: DataTypes.ENUM('KELVIN', 'METER', 'AMPERE', 'SECOND', 'MOLE', 'KILOGRAM', 'CANDELA'),
         allowNull: false,
         primaryKey: false
     },
@@ -23,13 +20,13 @@ const InventoryStockModel = {
         type: DataTypes.DOUBLE,
         allowNull: false,
         primaryKey: false,
-        defaultValue: '0',
+        defaultValue: 0,
     },
     minThreshold: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: false,
-        defaultValue: '0',
+        defaultValue: 0,
     },
 }
 module.exports = InventoryStockModel;

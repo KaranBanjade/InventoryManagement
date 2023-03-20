@@ -6,13 +6,10 @@ const AssetTrackModel = {
         type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
-        defaultValue: 'UUIDV4',
+        defaultValue: DataTypes.UUIDV4,
     },
     assetId: {
         type: DataTypes.UUID,
-        allowNull: true,
-        primaryKey: false,
-        defaultValue: 'FK',
     },
     oldStatus: {
         type: DataTypes.STRING,
