@@ -34,7 +34,7 @@ const AdminModel = {
         defaultValue: DataTypes.NOW,
     },
     hospitalId: {
-        type: DataTypes.UUID,
+        type: DataTypes.UUID
     }
 }
 

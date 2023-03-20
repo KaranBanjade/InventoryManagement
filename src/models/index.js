@@ -12,6 +12,8 @@ const AdminModel = require('./Admin')
         
             const Asset = db.define('Asset', AssetModel);
 
+            const Admin = db.define('Admin', AdminModel);
+
             const AssetTrack = db.define('AssetTrack', AssetTrackModel);
 
             const Inventory = db.define('Inventory', InventoryModel);
@@ -21,8 +23,6 @@ const AdminModel = require('./Admin')
             const InventoryStockTrack = db.define('InventoryStockTrack', InventoryStockTrackModel);
 
             const Hospital = db.define('Hospital', HospitalModel);
-
-            const Admin = db.define('Admin', AdminModel);
 
             Asset.hasMany(AssetTrack, {foreignKey: 'assetId', as: 'assetTracks_'});
             AssetTrack.belongsTo(Asset, {foreignKey: 'assetId',as: 'asset_'});
@@ -44,7 +44,7 @@ const AdminModel = require('./Admin')
 
         const syncDatabase = async () => {
             await db.sync({force: true,
-                logging: false,
+                logging: true,
                 freezeTableName: true
             });
         }
@@ -55,6 +55,7 @@ AssetTrack,
 Inventory,
 InventoryStock,
 InventoryStockTrack,
-Hospital
+Hospital,
+Admin,
         }
     

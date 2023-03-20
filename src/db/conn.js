@@ -16,6 +16,7 @@ const db = new Sequelize(DATABASE, USER, PASSWORD, {
 
 db.authenticate().then(() => {
     console.log("Connected!");
+    db.sync()
 })
     .catch((error) => {
         console.log(error);
