@@ -10,8 +10,7 @@
         const db = new Sequelize(DATABASE, USER, PASSWORD, {
             host: HOST,
             dialect: 'mysql',
-            logging: false,
-            force: true,
+            logging: false
             });
         
             db.authenticate().then(()=>{

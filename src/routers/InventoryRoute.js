@@ -8,7 +8,7 @@ const { throwError,sendResponse } = require('../utilities/tools');
 
 router.get('/:id',async (req, res) => {
         try {
-            const resp= await operations.get({id: req.params.id || req.query.id});
+            const resp= await operations.get({id: req.params.id || req.query.id, populate:'inventoryStocks_'});
             sendResponse({res, status: 200, data: resp});
         } catch (err) {
             throwError(res, err);
@@ -44,7 +44,7 @@ router.delete('/:id',async (req, res) => {
 
 router.post('/all', async(req, res) => {
     try {
-        const resp = await operations.getAll(req.body);
+        const resp = await operations.getAll({...req.body, populate: 'inventoryStocks_'});
             sendResponse({res, status: 200, data: resp});
     } catch (err) {
         throwError(res, err);

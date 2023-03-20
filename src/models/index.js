@@ -20,10 +20,10 @@ const InventoryStockTrackModel = require('./InventoryStockTrack')
             Asset.hasMany(AssetTrack, {foreignKey: 'assetId', as: 'assetTracks_'});
             AssetTrack.belongsTo(Asset, {foreignKey: 'assetId',as: 'asset_'});
 
-            Inventory.hasMany(InventoryStock, {foreignKey: 'inventoryId'});
+            Inventory.hasMany(InventoryStock, {foreignKey: 'inventoryId', as: 'inventoryStocks_'});
             InventoryStock.belongsTo(Inventory, {foreignKey: 'inventoryId',as: 'inventory_'});
 
-            InventoryStock.hasMany(InventoryStockTrack, {foreignKey: 'inventoryStockId'});
+            InventoryStock.hasMany(InventoryStockTrack, {foreignKey: 'inventoryStockId', as: 'inventoryStockTracks_'});
             InventoryStockTrack.belongsTo(InventoryStock, {foreignKey: 'inventoryStockId',as: 'inventoryStock_'});
 
         const syncDatabase = async () => {
