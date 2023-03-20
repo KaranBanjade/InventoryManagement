@@ -50,5 +50,8 @@ const AssetModel = {
         primaryKey: false,
         defaultValue: '',
     },
+    hospitalId: {
+        type: DataTypes.UUID,
+    },
 }
 module.exports = AssetModel;

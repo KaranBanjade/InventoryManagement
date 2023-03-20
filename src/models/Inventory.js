@@ -42,5 +42,8 @@ const InventoryModel = {
         primaryKey: false,
         defaultValue: '',
     },
+    hospitalId: {
+        type: DataTypes.UUID,
+    },
 }
 module.exports = InventoryModel;
