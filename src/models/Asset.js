@@ -35,7 +35,7 @@ const AssetModel = {
         type: DataTypes.DATE,
         allowNull: false,
         primaryKey: false,
-        defaultValue: '',
+        defaultValue: DataTypes.NOW,
     },
     model: {
         type: DataTypes.STRING,

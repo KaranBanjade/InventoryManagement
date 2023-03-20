@@ -30,7 +30,7 @@ const AssetTrackModel = {
         type: DataTypes.DATE,
         allowNull: false,
         primaryKey: false,
-        defaultValue: '',
+        defaultValue: DataTypes.NOW,
     },
 }
 module.exports = AssetTrackModel;

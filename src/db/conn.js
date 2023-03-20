@@ -15,6 +15,11 @@
         
             db.authenticate().then(()=>{
                 console.log("Connected!");
+                db.sync().then(()=>{
+                    console.log("Database is synced");
+                }).catch((error)=>{
+                    console.log(error);
+                })
             })
             .catch((error)=>{
                 console.log(error);
