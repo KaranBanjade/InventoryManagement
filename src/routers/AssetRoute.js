@@ -32,7 +32,7 @@ router.put('/:id', async (req, res) => {
         await Asset.update({ ...req.body }, { where: { id: req.params.id }, returning: true });
         await AssetTrack.create({
             assetId: req.params.id,
-            oldStatus: oldAsset?.status,
+            oldStatus: oldAsset.status,
             newStatus: req.body.status,
         });
         sendResponse({ res, status: 200, data: { message: 'Updated successfully' } });

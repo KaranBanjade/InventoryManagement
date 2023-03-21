@@ -30,7 +30,7 @@ router.put('/:id', async (req, res) => {
         await operations.update({ id: req.params.id || req.query.id, body: req.body });
         await InventoryStockTrack.create({
             inventoryStockId: req.params.id,
-            oldCount: oldInventoryStock?.numberOfItems,
+            oldCount: oldInventoryStock.numberOfItems,
             newCount: req.body.numberOfItems
         });
         sendResponse({ res, status: 200, data: { message: 'Updated successfully' } });
